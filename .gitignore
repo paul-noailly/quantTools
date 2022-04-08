@@ -11,5 +11,5 @@ __pycache__/
 config.yaml
 # version
 **/v1
-# data
+# all data
 *.json
