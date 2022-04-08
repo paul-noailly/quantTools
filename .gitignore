@@ -4,11 +4,12 @@ __pycache__/
 *.ipynb
 # logs
 **/logs
+*.log
 # vs code
 *.code-workspace
 # sensitive informations
 config.yaml
 # version
 **/v1
-# logs
-*.log
+# data
+*.json
