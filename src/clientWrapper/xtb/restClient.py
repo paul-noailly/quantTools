@@ -1,7 +1,7 @@
 from utilities import baseCommand
 from jsonSocket import JsonSocket
 from typing import List
-from enums import _check_period
+from checks import _check_period
 
 
 
@@ -37,7 +37,7 @@ class XtbRestClient(JsonSocket):
     
     # raw get: non modified get functions
     
-    def rawGet_symbols_raw(self):
+    def rawGet_symbols(self):
         resp =  self._commandExecute("getAllSymbols")
         if resp['status']:
             return resp['returnData']
