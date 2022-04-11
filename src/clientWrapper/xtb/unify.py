@@ -63,3 +63,5 @@ def unify_contract(dic:dict) -> Contract:
         contract_size=dic['contractSize'],
         leverage=dic['leverage']
     )
+    
+    return res
