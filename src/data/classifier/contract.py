@@ -10,6 +10,7 @@ class Contract():
                  instrument,
                  maker_fee,
                  taker_fee,
+                 commision,
                  precision_price,
                  precision_buy_qty,
                  precision_sell_qty,
@@ -24,6 +25,7 @@ class Contract():
         self.instrument = instrument
         self.maker_fee = maker_fee
         self.taker_fee = taker_fee
+        self.commision = commision
         self.precision_price = precision_price
         self.precision_buy_qty = precision_buy_qty
         self.precision_sell_qty = precision_sell_qty
@@ -47,7 +49,8 @@ class Contract():
             "instrument": self.instrument,
             "fees": {
                 "maker_fee": self.maker_fee,
-                "taker_fee": self.taker_fee,                
+                "taker_fee": self.taker_fee,    
+                "commision": self.commision            
             },
             "precision":{
                 "precision_price": self.precision_price,

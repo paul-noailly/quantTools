@@ -16,8 +16,8 @@ TRANSLATOR = Translator()
 def unify_contract(dic:dict) -> Contract:
     
     
-    market=TRANSLATOR.translate_categoryName_market(dic['categoryName']), 
-    sub_market=TRANSLATOR.translate_groupName_subMarket(dic['categoryName']), 
+    market=TRANSLATOR.translate_categoryName_market(dic['categoryName'])
+    sub_market=TRANSLATOR.translate_groupName_subMarket(dic['groupName'])
     if market == "stocks":
         base=dic['symbol'].split('.')[0]
         quote=dic['currencyProfit']
@@ -36,6 +36,9 @@ def unify_contract(dic:dict) -> Contract:
     elif market == "commodities":
         base=dic['symbol']
         quote=dic['currencyProfit']
+    else:
+        print("ERROR")
+        print(dic)
         
     asset = Asset(
         base=base,
