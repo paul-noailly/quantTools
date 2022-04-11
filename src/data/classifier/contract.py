@@ -15,7 +15,9 @@ class Contract():
                  precision_sell_qty,
                  min_stop_loss_point,
                  min_tp_point,
-                 contract_size
+                 min_qty,
+                 contract_size,
+                 leverage
                 ) -> None:
         self.source = source
         self.asset = asset
@@ -27,7 +29,9 @@ class Contract():
         self.precision_sell_qty = precision_sell_qty
         self.min_stop_loss_point = min_stop_loss_point
         self.min_tp_point = min_tp_point
+        self.min_qty = min_qty
         self.contract_size = contract_size
+        self.leverage = leverage
     
     def _get_key(self):
         return f"c_[{self.source._get_key()}]|[{self.asset._get_key()}]|[{self.instrument._get_key()}]"
@@ -53,8 +57,10 @@ class Contract():
             "limits":{
                 "min_stop_loss_point": self.min_stop_loss_point,
                 "min_tp_point": self.min_tp_point,
+                "min_qty": self.min_qty,
             },
             "infos":{
-                "contract_size": self.contract_size
+                "contract_size": self.contract_size,
+                "leverage": self.leverage
             }
         }

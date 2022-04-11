@@ -222,7 +222,7 @@ class XtbRestClient(JsonSocket):
     # unified
     
     def get_contracts(self) -> List[Contract]:
-        return [unify_contract(contract_dict) for contract_dict in self.rawGet_symbols()]
+        return [unify_contract(contract_dict) for contract_dict in self.rawGet_contracts()]
         
 
         

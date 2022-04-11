@@ -1,6 +1,6 @@
+from clientWrapper.unified.enums import MARKET
 
-
-class Translations(object):
+class Translator(object):
     groupName_subMarket = {
         # commodities
         'Agriculture': 'Agriculture',
@@ -40,9 +40,34 @@ class Translations(object):
         
     }
     categoryName_market = {
-        'ETF':"etf", 
-        'CMD':"commodities", 
-        'IND':"indices", 
-        'CRT':"crypto", 
-        'STC':"stocks", 
-        'FX': "forex"}
+        'ETF':MARKET.ETF.value, 
+        'CMD':MARKET.COMMODITIES.value, 
+        'IND':MARKET.INDICES.value, 
+        'CRT':MARKET.CRYPTO.value, 
+        'STC':MARKET.STOCKS.value, 
+        'FX': MARKET.FX.value}
+    
+    symbolIndice = {
+        'US500.cash': 'US500.cash',
+        'BRAComp': 'BRAComp',
+        'US100': 'US100',
+        'VIX': 'VIX',
+        'US500': 'US500',
+        'US30': 'US30',
+        'US100.cash': 'US100.cash',
+        'US2000': 'US2000',
+        'US30.cash': 'US30.cash',
+        'USFANG': 'USFANG',
+        'VOLX': 'VOLX',
+        'MEXComp': 'MEXComp',
+    }
+    
+    def translate_categoryName_market(self, val):
+        if val in Translator.categoryName_market:
+            return Translator.categoryName_market[val]
+        return val
+    
+    def translate_groupName_subMarket(self, val):
+        if val in Translator.groupName_subMarket:
+            return Translator.groupName_subMarket[val]
+        return val
