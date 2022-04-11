@@ -1,5 +1,5 @@
 from typing import List, Dict
-import contractClassification.customTags as tags
+import data.classifier.customTags as tags
 
 
 class Topic():

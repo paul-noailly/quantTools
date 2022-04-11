@@ -12,6 +12,7 @@ def generate_asset_from_dict(dic:Dict):
         quote=dic['quote'],
         market=dic['market'],
         sub_market=dic['sub_market'],
+        description = dic['description'],
         tags=dic['tags'],
     )
 
@@ -25,11 +26,18 @@ class Asset():
     - sub_market : a sub market: Major    
     - tags : a list of tags.
     """
-    def __init__(self, base:str, quote:str, market:str=None, sub_market:str=None, tags:list=[]) -> None:
+    def __init__(self, 
+                 base:str, 
+                 quote:str, 
+                 market:str=None, 
+                 sub_market:str=None, 
+                 description:str="",
+                 tags:list=[]) -> None:
         self.quote = quote
         self.base = base
         self.market = market
         self.sub_market = sub_market
+        self.description = description
         self.tags = tags
         
     def _asdict(self):
@@ -38,6 +46,7 @@ class Asset():
             'quote': self.quote,
             'market': self.market,
             'sub_market': self.sub_market,
+            'description': self.description,
             'tags': self.tags
         }
         

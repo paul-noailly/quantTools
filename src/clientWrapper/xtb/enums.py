@@ -1,4 +1,5 @@
 import enum
+import os
 
 
 class STATUS(enum.Enum):
@@ -33,3 +34,8 @@ class PERIOD(enum.Enum):
     ONE_DAY = 1440
     ONE_WEEK = 10080
     ONE_MONTH = 43200
+    
+import enum
+class SYMBOLS(enum.Enum):
+    if "symbols.json" in os.listdir():
+        pass

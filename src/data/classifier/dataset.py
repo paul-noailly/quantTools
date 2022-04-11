@@ -1,5 +1,5 @@
-from ..dataClassification.contract import Contract
-from ..dataClassification.topic import Topic
+from data.classifier.contract import Contract
+from data.classifier.topic import Topic
 
 
 class Dataset():

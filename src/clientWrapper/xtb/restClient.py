@@ -3,6 +3,9 @@ from jsonSocket import JsonSocket
 from typing import List
 from checks import _check_period
 
+from unify import unify_contract
+from data.classifier.contract import Contract
+
 
 
 class XtbRestClient(JsonSocket):
@@ -37,7 +40,7 @@ class XtbRestClient(JsonSocket):
     
     # raw get: non modified get functions
     
-    def rawGet_symbols(self):
+    def rawGet_contracts(self):
         resp =  self._commandExecute("getAllSymbols")
         if resp['status']:
             return resp['returnData']
@@ -216,7 +219,10 @@ class XtbRestClient(JsonSocket):
         
         
         
-        
+    # unified
+    
+    def get_contracts(self) -> List[Contract]:
+        return [unify_contract(contract_dict) for contract_dict in self.rawGet_symbols()]
         
 
         

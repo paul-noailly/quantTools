@@ -37,3 +37,5 @@ def procProfitMsgPrinter(msg):
 # example function for processing news from Streaming socket
 def procNewsMsgPrinter(msg): 
     print("NEWS: ", msg)
+    
+    

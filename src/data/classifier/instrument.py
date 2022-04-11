@@ -78,14 +78,13 @@ class Option():
 
 
 class Perpetual():
-    def __init__(self, type:str, margin_currency:str) -> None:
+    def __init__(self, margin_currency:str) -> None:
         """Generate Perpetual swap Instrument
 
         Args:
-            type (str): within [call, put, straddle, binary]
             margin_currency (float): margin currency used to buy & sell contract
         """
-        self.type = type
+        self.type = "perpetual"
         self.margin_currency = margin_currency
     
     def _asdict(self):
@@ -105,19 +104,18 @@ class Perpetual():
 
 
 class Future():
-    def __init__(self, type:str, 
+    def __init__(self, 
                  margin_currency:str, 
                  expiration_time_utc:float, 
                  launch_time_utc:float) -> None:
         """Generate Future Instrument
 
         Args:
-            type (str): within [call, put, straddle, binary]
             margin_currency (float): margin currency used to buy & sell contract
             expiration_time_utc (float): utc time in sec at whcih contract will terminate
             launch_time_utc (float): utc time in sec at whcih contract was initiated
         """
-        self.type = type
+        self.type = "future"
         self.margin_currency = margin_currency
         self.expiration_time_utc = expiration_time_utc
         self.launch_time_utc = launch_time_utc
@@ -142,17 +140,16 @@ class Future():
 
 
 class Token():
-    def __init__(self, type:str, 
+    def __init__(self,
                  multiplier:float, 
                  margin_currency:str, ) -> None:
         """Generate Token Instrument
 
         Args:
-            type (str): within [call, put, straddle, binary]
             multiplier (float): multiplier of the token
             margin_currency (float): margin currency used to buy & sell contract
         """
-        self.type = type
+        self.type = "token"
         self.margin_currency = margin_currency
         self.multiplier = multiplier
     
