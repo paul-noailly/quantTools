@@ -49,6 +49,9 @@ class RawTick(Topic):
     
     def set_columns(self, columns):
         self.columns = columns
+    
+    def _get_key(self):
+        return f"raw_tick"
             
     
     
@@ -69,6 +72,9 @@ class RawCandlestick(Topic):
     
     def set_columns(self, columns):
         self.columns = columns
+    
+    def _get_key(self):
+        return f"raw_candles_{self.timeframe}"
         
         
 class RawTrades(Topic):
@@ -89,6 +95,9 @@ class RawTrades(Topic):
     
     def set_columns(self, columns):
         self.columns = columns
+    
+    def _get_key(self):
+        return f"raw_trades"
         
         
         
@@ -111,6 +120,9 @@ class Tick_BBBA_from_Trades(Topic):
     
     def set_columns(self, columns):
         self.columns = columns
+    
+    def _get_key(self):
+        return f"tick_bbba"
         
         
 class OHLC(Topic):
@@ -129,6 +141,9 @@ class OHLC(Topic):
     
     def set_columns(self, columns):
         self.columns = columns
+    
+    def _get_key(self):
+        return f"ohlc_{self.timeframe}"
         
 class OHLCV(Topic):
     def __init__(self, timeframe) -> None:
@@ -147,6 +162,9 @@ class OHLCV(Topic):
     
     def set_columns(self, columns):
         self.columns = columns
+    
+    def _get_key(self):
+        return f"ohlcv_{self.timeframe}"
         
 
 class OHLC_from_BBBA(Topic):
@@ -193,11 +211,14 @@ class OHLCVE_from_trades(Topic):
     
     def set_columns(self, columns):
         self.columns = columns
+    
+    def _get_key(self):
+        return f"ohlcv_tradesEnriched_{self.timeframe}"
         
-class OHLCVE_from_trades_NVinterval(Topic):
-    def __init__(self, timeframe) -> None:
+class OHLCVE_from_trades_QVinterval(Topic):
+    def __init__(self, interval) -> None:
         super().__init__()
-        self.timeframe = timeframe
+        self.interval = interval
         self.columns = ['time', 'open_ask', 'high_ask', 'low_ask', 'close_ask',
                         'open_bid', 'high_bid', 'low_bid', 'close_bid', 'time_interval',
                         "volume_buy", "volume_sell", "prop_buy_trades", "propV_buy",
@@ -220,5 +241,8 @@ class OHLCVE_from_trades_NVinterval(Topic):
     
     def set_columns(self, columns):
         self.columns = columns
+    
+    def _get_key(self):
+        return f"ohlcv_tradesEnriched_quoteVolumeInterval_{self.interval}"
 
         

@@ -67,3 +67,8 @@ class Contract():
                 "leverage": self.leverage
             }
         }
+        
+        
+        
+    def get_intraday_folder_path(self, topic, year, month, day):
+        return f"/home/paul/Data/{self.source._get_key()}/{self.instrument._get_key()}/{self.asset.market}_{self.asset.sub_market}/{self.base}_{self.quote}/{topic._get_key()}/intraday/" 

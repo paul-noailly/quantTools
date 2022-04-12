@@ -156,7 +156,7 @@ class Token():
     def _asdict(self):
         return {
             "type": self.type,
-            "strimultiplierke": self.multiplier,
+            "multiplier": self.multiplier,
             "margin_currency": self.margin_currency,
             
         }
