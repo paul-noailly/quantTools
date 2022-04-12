@@ -150,7 +150,7 @@ class XtbRestClient(JsonSocket):
         if resp['status']:
             return resp['returnData']['rateInfos']
         else:
-            raise Exception(f"Error on get_symbols: {str(resp)}")
+            raise Exception(f"Error on getChartRangeRequest: {str(resp)}")
         
     def rawGet_nbsCandlesFromStart(self, period:int, start:int, bars:int, symbol:str) -> List[dict]:
         """return a list of <bars> candlesticks from start time
@@ -189,7 +189,7 @@ class XtbRestClient(JsonSocket):
         if resp['status']:
             return resp['returnData']['rateInfos']
         else:
-            raise Exception(f"Error on get_symbols: {str(resp)}")
+            raise Exception(f"Error on getChartRangeRequest: {str(resp)}")
         
         
     def rawGet_commission(self, volume:float, symbol:str) -> dict:
@@ -215,6 +215,14 @@ class XtbRestClient(JsonSocket):
         if resp['status']:
             return resp['returnData']
         else:
+            raise Exception(f"Error on getCommissionDef: {str(resp)}")
+        
+        
+    def rawGet_tradingHours(self, symbols:List[str]=[]):
+        resp =  self._commandExecute("getTradingHours", dict(symbols=symbols))
+        if resp['status']:
+            return resp['returnData']
+        else:
             raise Exception(f"Error on get_symbols: {str(resp)}")
         
         
@@ -224,5 +232,8 @@ class XtbRestClient(JsonSocket):
     def get_contracts(self) -> List[Contract]:
         return [unify_contract(contract_dict) for contract_dict in self.rawGet_contracts()]
         
-
+        
+    def get_ohlc_weekly(self, year, month, day, symbol, timeframe):
+        # candles = self.rawGet_rangeCandles(period=, start=, end=, symbol=))
+        return 0
         

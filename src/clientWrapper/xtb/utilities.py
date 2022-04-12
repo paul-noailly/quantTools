@@ -1,4 +1,4 @@
-
+import datetime
 
 
 
@@ -39,3 +39,15 @@ def procNewsMsgPrinter(msg):
     print("NEWS: ", msg)
     
     
+# months
+
+def get_datetime_previous_month(date:datetime.datetime) -> datetime.datetime:
+    previous_month = (date.month-2)%12+1
+    previous_year = date.year - previous_month//12
+    return datetime.datetime(previous_year, previous_month, date.day)
+
+
+def get_datetime_next_month(date:datetime.datetime) -> datetime.datetime:
+    next_month = date.month%12+1
+    next_year = date.year + date.month//12
+    return datetime.datetime(next_year, next_month, date.day)

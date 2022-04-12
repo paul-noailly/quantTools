@@ -44,9 +44,9 @@ class Contract():
     
     def _asdict(self):
         return {
-            "source": self.source,
-            "asset": self.asset,
-            "instrument": self.instrument,
+            "source": self.source._asdict(),
+            "asset": self.asset._asdict(),
+            "instrument": self.instrument._asdict(),
             "fees": {
                 "maker_fee": self.maker_fee,
                 "taker_fee": self.taker_fee,    
