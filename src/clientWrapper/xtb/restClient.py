@@ -40,6 +40,14 @@ class XtbRestClient(JsonSocket):
     
     # raw get: non modified get functions
     
+    def ping(self):
+        resp =  self._commandExecute("ping")
+        if resp['status']:
+            return True
+        else:
+            raise Exception(f"Error on ping")
+        
+    
     def rawGet_contracts(self):
         resp =  self._commandExecute("getAllSymbols")
         if resp['status']:
@@ -224,6 +232,30 @@ class XtbRestClient(JsonSocket):
             return resp['returnData']
         else:
             raise Exception(f"Error on get_symbols: {str(resp)}")
+        
+    def rawGet_tickPrices(self, symbol, level):
+        resp =  self._commandExecute("getTickPrices", dict(level=level, symbols=[symbol], timestamp=-1))
+        if resp['status']:
+            return resp['returnData']['quotations']
+        else:
+            raise Exception(f"Error on getTickPrices: {str(resp)}")
+        
+    def rawGet_serverTime(self):
+        resp =  self._commandExecute("getServerTime")
+        if resp['status']:
+            return resp['returnData']   
+        else:
+            raise Exception(f"Error on getServerTime: {str(resp)}")
+        
+        
+    def rawGet_userData(self):
+        resp =  self._commandExecute("getCurrentUserData")
+        if resp['status']:
+            return resp['returnData']   
+        else:
+            raise Exception(f"Error on getServerTime: {str(resp)}")
+        
+        
         
         
         
